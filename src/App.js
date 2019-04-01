@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import TextArea from './components/TextArea/TextArea';
 class App extends Component {
+
+  componentDidMount() {
+    const sencences = [
+      { text: 'this is lorem ipsum', positionNumber: 0 },
+      { text: 'some other text', positionNumber: 1 },
+    ];
+    const activeSentence = sencences[0];
+    this.setState({
+      sencences,
+      activeSentence,
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <TextArea activeSentence={this.state && this.state.activeSentence} />
       </div>
     );
   }
